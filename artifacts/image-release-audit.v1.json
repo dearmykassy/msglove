@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "massage-love-image-release-audit/v1",
+  "auditedAt": "2026-08-15T01:10:26Z",
+  "status": "PASS",
+  "releaseScope": "LOCAL_STATIC_PREVIEW",
+  "deploymentGo": false,
+  "sourceGeneration": {
+    "provider": "openai-image-generation",
+    "requestedModelIntent": "gpt-image-2",
+    "requestedQualityIntent": "medium",
+    "requestedSizeIntent": "2048x1152-wide-16:9",
+    "observedSourceFormat": "png",
+    "observedSourceWidth": 1672,
+    "observedSourceHeight": 941,
+    "sourceImageCount": 130,
+    "generationReceiptCount": 130,
+    "visualReviewBatchCount": 15,
+    "visualReviewPassCount": 130,
+    "visualReviewRejectCount": 0,
+    "contactSheet": {
+      "path": "/Users/ssm/Documents/Codex/runtome/pipeline/gpt-image-2-region-banners-v1/reviews/contact-sheets/massage-love-a02-all-130.png",
+      "sha256": "bfbe0c120ca5cd6ead5c2fb59c739d6a1d14e8624a5c75c0ab8e267b9a74079d"
+    }
+  },
+  "routeAssignment": {
+    "path": "/Users/ssm/Documents/Codex/runtome/pipeline/gpt-image-2-region-banners-v1/assignments/massage-love-a02.route-plan.json",
+    "sha256": "37c2559811ea1a9069f670a67d0be16489719f7cdb972432d731a05f0dbfd474",
+    "activeRouteCount": 1291,
+    "uniqueRouteCount": 1291,
+    "uniqueAssetCount": 130,
+    "assetsUsedTenTimes": 121,
+    "assetsUsedNineTimes": 9,
+    "maximumReuse": 10,
+    "missingRoutes": 0,
+    "extraRoutes": 0
+  },
+  "runtimeManifest": {
+    "path": "/Users/ssm/Documents/Codex/massage-love/src/data/image-release.generated.json",
+    "sha256": "408297f1cefd1d19ac0ba595ead3640a585b06f17cacb2f39f4974ed3e2afd9a",
+    "status": "COMPLETE",
+    "routeBindingCount": 1291
+  },
+  "derivedAssets": {
+    "root": "/Users/ssm/Documents/Codex/massage-love/public/images/massage-love-heroes/v2",
+    "fileCount": 390,
+    "totalBytes": 12968686,
+    "missingFileCount": 0,
+    "shaMismatchCount": 0,
+    "formatMismatchCount": 0,
+    "dimensions": {
+      "desktop": "1672x941",
+      "tablet": "1100x619",
+      "mobile": "700x394"
+    }
+  },
+  "builtOutput": {
+    "staticPageCount": 1302,
+    "regionalHtmlCount": 1291,
+    "missingHtmlCount": 0,
+    "pictureBindingMismatchCount": 0,
+    "headerPaletteBindingMismatchCount": 0,
+    "brokenAssetReferenceCount": 0
+  },
+  "browser": {
+    "engine": "codex-in-app-browser",
+    "desktopRepresentativeClasses": [
+      "root",
+      "hub",
+      "leaf"
+    ],
+    "mobileCases": [
+      "root-320x844",
+      "leaf-390x844"
+    ],
+    "mobileAssetVariantMismatchCount": 0,
+    "horizontalOverflowCount": 0,
+    "brokenImageCount": 0,
+    "headerHeroOverlapDesktopPx": 68,
+    "headerHeroOverlapMobilePx": 62
+  },
+  "styleBinding": {
+    "path": "/Users/ssm/Documents/Codex/massage-love/src/app/globals.css",
+    "sha256": "b1bf00ab13343c0f273283a24744a71f6fb62d621b37770333e1f2a9badef351",
+    "mobileObjectPosition": "70% 50%",
+    "headerSource": "upper-18-percent-image-palette",
+    "headerRule": "darker-translucent-gradient"
+  },
+  "violations": []
+}

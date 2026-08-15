@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "massage-love-provider-binding-amendment/v1",
+  "createdAt": "2026-08-14T10:45:40+09:00",
+  "campaignId": "massage-love-image-campaign-v1",
+  "reason": "Independent pre-send audit found that fresh lane-page counters were incorrectly compared with cumulative campaign submissions and that provider request/reference digests were not exact-checked.",
+  "metaCalls": 0,
+  "generationSubmissionsBefore": 0,
+  "generationSubmissionsAfter": 0,
+  "immutableContracts": {
+    "planFileSha256": "7217c6dc1dd98a17b0caec86da68e6c16c9b726898a3c9f971137db3298bd2fa",
+    "campaignFileSha256": "72668e5073767083d0a82eb7402330ae22aab2376d5de9565e8201a3debe9cf2"
+  },
+  "manifestAmendment": {
+    "beforeSha256": "8a815c2a354f7cd56ec0ad221245694db9d5c0dd3b11b83081380d992d28e74a",
+    "afterSha256": "da0f154f55fdf9149b781bd87a49aea63b431fd10a8ded2e854fd3866f5deb68",
+    "change": "Added the exact providerBindingPolicy object only; all 324 entry identities and zero-submission state remain unchanged."
+  },
+  "providerBinding": {
+    "schemaVersion": "meta-ai-text-only-request-binding/v1",
+    "promptDigest": "sha256:<plan promptSha256>",
+    "requestDigestCanonicalJsonKeyOrder": [
+      "version",
+      "prompt_digest",
+      "output_subdirectory",
+      "reference_digest"
+    ],
+    "emptyReferenceDigest": "sha256:7c4bde9f12a2629875105d124e5d72b48e9487619f060111dc4fe49d6c3f69a9",
+    "referenceCount": 0,
+    "startResponsePolicy": "prompt_digest, request_digest, reference_digest, and reference_count are all mandatory exact matches before a provider job is accepted."
+  },
+  "restartPolicy": {
+    "freshLanePageSubmissionCount": 0,
+    "cumulativeSubmissionAuthority": "generation manifest entries plus exact durable jobs.json request binding",
+    "foreignNonterminalJobsBlocked": true,
+    "knownCampaignActiveJobsDrainOnly": true,
+    "uncertaintyBlocksAllNewSubmissions": true
+  },
+  "implementationPins": {
+    "libSha256": "76cece17cb09a27b71e24fc53ed92557abda191df52b49fea9622fd0dd79b1bf",
+    "runnerSha256": "4870748ea4849d94c4d7890a8d586ac97aa569b5d36cd6bddfa3b3c96a792288",
+    "runnerTestSha256": "f1a1611ebefb978e2fa264daf9d772e1f29aa161855d421272734ff7dd866b74"
+  }
+}
