@@ -5,7 +5,8 @@
  * MassageBom checkout.
  */
 import { createHash } from "node:crypto";
-import { execFileSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -46,16 +47,95 @@ type BaselinePayload = {
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const workspaceRoot = path.resolve(projectRoot, "..");
-const massageBomRoot = path.resolve(
-  process.env.MASSAGEBOM_ROOT ?? path.join(workspaceRoot, "massagebom"),
+const massageBomRoot = [
+  process.env.MASSAGEBOM_ROOT,
+  path.join(workspaceRoot, "msgbom"),
+  path.join(workspaceRoot, "massagebom"),
+]
+  .filter((candidate): candidate is string => typeof candidate === "string")
+  .map((candidate) => path.resolve(candidate))
+  .find(
+    (candidate) =>
+      existsSync(path.join(candidate, "tsconfig.json")) &&
+      existsSync(path.join(candidate, "src", "lib", "region-seo-copy.ts")),
+  );
+
+if (!massageBomRoot) {
+  throw new Error("MASSAGE_LOVE_MASSAGEBOM_ROOT_NOT_FOUND");
+}
+
+const runtomeRoot = [
+  process.env.MASSAGEBOM_MATERIALIZER_ROOT,
+  path.join(workspaceRoot, "runtome"),
+  path.resolve(projectRoot, "..", "..", "Codex", "runtome"),
+].find(
+  (candidate): candidate is string =>
+    typeof candidate === "string" &&
+    existsSync(
+      path.join(
+        candidate,
+        "pipeline",
+        "massagebom-child-site-v1",
+        "materialize-live-baseline.mts",
+      ),
+    ),
 );
+
+if (!runtomeRoot) {
+  throw new Error("MASSAGE_LOVE_MATERIALIZER_NOT_FOUND");
+}
+
 const materializerPath = path.join(
-  workspaceRoot,
-  "runtome",
+  runtomeRoot,
   "pipeline",
   "massagebom-child-site-v1",
   "materialize-live-baseline.mts",
 );
+const massageBomTsconfigPath = path.join(massageBomRoot, "tsconfig.json");
+const materializerArgs = [
+  "--tsconfig",
+  massageBomTsconfigPath,
+  materializerPath,
+  massageBomRoot,
+] as const;
+const loveTsxPath = path.join(projectRoot, "node_modules", ".bin", "tsx");
+const materializerEnv = { ...process.env };
+
+// `tsx` adds its own package paths when this script is launched through pnpm.
+// Do not pass those resolver internals to the separately launched, Love-local
+// runner; it must resolve the supplied MassageBom tsconfig on its own.
+delete materializerEnv.NODE_PATH;
+
+if (!existsSync(loveTsxPath)) {
+  throw new Error("MASSAGE_LOVE_LOCAL_TSX_NOT_FOUND");
+}
+
+function materializeMassageBom(): string {
+  const result = spawnSync(
+    loveTsxPath,
+    materializerArgs,
+    {
+      cwd: projectRoot,
+      env: materializerEnv,
+      encoding: "utf8",
+      maxBuffer: 128 * 1024 * 1024,
+    },
+  );
+
+  if (result.error) {
+    throw new Error(`MASSAGE_LOVE_MATERIALIZER_EXEC_FAILED:${result.error.message}`);
+  }
+  if (result.status !== 0) {
+    const stderr = typeof result.stderr === "string" ? result.stderr.trim() : "";
+    throw new Error(`MASSAGE_LOVE_MATERIALIZER_FAILED:${result.status}:${stderr.slice(-1000)}`);
+  }
+  if (typeof result.stdout !== "string") {
+    throw new Error("MASSAGE_LOVE_MATERIALIZER_OUTPUT_INVALID");
+  }
+
+  return result.stdout;
+}
+
 const snapshotPath = path.join(projectRoot, "src/data/region-content.generated.json");
 const manifestPath = path.join(
   projectRoot,
@@ -284,15 +364,7 @@ function manifestEntry(source: BaselineEntry, target: JsonRecord): JsonRecord {
 }
 
 async function main() {
-  const materialized = execFileSync(
-    process.execPath,
-    ["--import", "tsx", materializerPath, massageBomRoot],
-    {
-      cwd: massageBomRoot,
-      encoding: "utf8",
-      maxBuffer: 128 * 1024 * 1024,
-    },
-  );
+  const materialized = materializeMassageBom();
   const baseline = JSON.parse(materialized) as BaselinePayload;
   if (
     baseline.schemaVersion !== 1 ||
@@ -429,7 +501,13 @@ async function main() {
       commercialName,
       localityLabel: source.approved.locality_label,
       fields: {
-        title: `${keywords[0]} · ${keywords[1]} | ${commercialName} | 마사지러브`,
+        title: rewriteText(
+          source.seo.metadata.title,
+          node.path,
+          "title",
+          sourceName,
+          commercialName,
+        ),
         description: rewriteText(
           source.seo.metadata.description,
           node.path,

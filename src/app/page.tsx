@@ -15,6 +15,8 @@ export const metadata = fixedPageMetadata({
   route: "/",
   title: HOME_COPY.metadataTitle,
   description: HOME_COPY.metadataDescription,
+  keywords: HOME_COPY.metadataKeywords,
+  absoluteTitle: true,
 });
 
 export default function HomePage() {
@@ -94,6 +96,12 @@ export default function HomePage() {
             <p>{HOME_COPY.regionParagraph}</p>
           </div>
           <RootRegionGrid variant="home" cardLabel={HOME_COPY.regionCardLabel} />
+          <a
+            className="home-region-photo-credits"
+            href="/images/massage-love-root-regions/v1/provenance.json"
+          >
+            지역 사진 출처 및 라이선스
+          </a>
         </div>
       </section>
 

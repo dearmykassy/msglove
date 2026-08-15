@@ -2471,7 +2471,7 @@ summary {
 }
 
 .home-page .home-hero {
-  min-height: 500px;
+  min-height: 625px;
   overflow: hidden;
   color: #fffaf7;
   background: #351d26;
@@ -2511,13 +2511,13 @@ summary {
 .home-page .home-hero-inner {
   position: relative;
   z-index: 2;
-  min-height: 500px;
+  min-height: 625px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  padding: 54px 0 74px;
+  padding: 68px 0 74px;
 }
 
 .home-hero-copy { width: min(100%, 610px); }
@@ -2557,7 +2557,7 @@ summary {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 38px;
 }
 
 .home-primary-button,
@@ -2585,7 +2585,7 @@ summary {
   align-self: flex-end;
   width: 264px;
   margin: 0;
-  padding: 8px 18px;
+  padding: 10px 18px;
   border: 1px solid rgba(255, 244, 241, 0.18);
   background: rgba(255, 250, 247, 0.065);
   list-style: none;
@@ -2703,6 +2703,19 @@ summary {
 .home-region-card strong { display: block; font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; font-size: clamp(26px, 2.2vw, 33px); font-weight: 720; letter-spacing: -0.065em; line-height: 1.1; }
 .home-region-card div > span { display: block; margin-top: 9px; color: rgba(255, 250, 247, 0.72); font-size: 11px; font-weight: 650; }
 .home-region-card i { position: absolute; top: 14px; right: 15px; color: #ffe7e4; font-size: 15px; font-style: normal; }
+.home-region-photo-credits {
+  display: block;
+  width: fit-content;
+  margin: 14px 0 0 auto;
+  color: rgba(59, 34, 40, 0.62);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  text-decoration: underline;
+  text-decoration-color: rgba(59, 34, 40, 0.24);
+  text-underline-offset: 3px;
+}
+.home-region-photo-credits:hover { color: #7b3040; }
 .home-region-card.tone-pearl,
 .home-region-card.tone-silk { color: #3b2228; }
 .home-region-card.tone-pearl .root-number,
@@ -2763,14 +2776,20 @@ summary {
   .header-call::after { display: none; }
   .mobile-menu summary { min-width: 40px; min-height: 40px; padding: 0 7px; font-size: 11px; }
   .home-page .home-hero,
-  .home-page .home-hero-inner { min-height: auto; }
-  .home-page .home-hero-inner { display: block; padding: 58px 0 64px; }
+  .home-page .home-hero-inner { min-height: 625px; }
+  .home-page .home-hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    padding: 74px 0 80px;
+  }
   .home-page .home-hero h1 { font-size: clamp(40px, 12vw, 54px); }
-  .home-hero-copy > p { margin-top: 17px; font-size: 15px; }
-  .home-hero-actions { margin-top: 25px; }
+  .home-hero-copy > p { margin-top: 21px; font-size: 15px; }
+  .home-hero-actions { margin-top: 31px; }
   .home-primary-button,
   .home-secondary-button { min-height: 48px; padding: 0 16px; font-size: 13px; }
-  .home-hero-facts { width: 100%; margin-top: 28px; padding: 4px 14px; }
+  .home-hero-facts { width: 100%; margin-top: 35px; padding: 5px 14px; }
   .home-hero-facts li { min-height: 38px; }
   .home-page .home-region-section { padding: 58px 0 68px; }
   .home-region-search { min-height: 0; grid-template-columns: 1fr auto; gap: 12px; padding: 15px; }
@@ -2968,11 +2987,19 @@ summary {
 /* Keep regional pages visually compact and consistent with the MassageBom child template. */
 .region-landing .region-hero,
 .region-landing .region-hero-inner {
-  min-height: 590px;
+  min-height: 740px;
 }
 
 .region-landing .region-hero-inner {
-  padding-top: 96px;
+  padding-top: 120px;
+}
+
+.region-landing .hero-actions {
+  margin-top: 42px;
+}
+
+.region-landing .region-fact-strip div {
+  padding-block: 22px;
 }
 
 .region-landing .region-hero h1 {
@@ -3039,8 +3066,10 @@ summary {
   .standards-grid h3 { margin-top: 28px; }
   .region-phone-fab { right: 14px; bottom: 14px; }
   .region-landing .region-hero,
-  .region-landing .region-hero-inner { min-height: 540px; }
-  .region-landing .region-hero-inner { padding-top: 78px; }
+  .region-landing .region-hero-inner { min-height: 675px; }
+  .region-landing .region-hero-inner { padding-top: 98px; }
+  .region-landing .region-hero-copy { margin: auto 0 34px; }
+  .region-landing .region-fact-strip div { padding: 17px 8px 0 0; }
   .region-landing .region-hero h1 { font-size: clamp(32px, 10vw, 44px); }
   .region-landing .region-body > section { padding-block: 58px; }
 }

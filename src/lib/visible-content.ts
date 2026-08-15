@@ -5,6 +5,7 @@ import { getDirectChildren, type RegionNode } from "@/lib/regions";
 export type VisibleContentFields = {
   title: string;
   description: string;
+  keywords?: string[];
   h1: string;
   eyebrow: string;
   headings: string[];
@@ -40,9 +41,15 @@ export const SITE_COPY = {
 } as const;
 
 export const HOME_COPY = {
-  metadataTitle: "도시의 저녁을 연결하는 방문 상담",
+  metadataTitle: "마사지러브 | 전국 출장 마사지 · 지역별 코스·가격 안내",
   metadataDescription:
     "마사지러브 운영 지역, 코스별 가격, 현장 후불과 카드 결제 기준을 한곳에서 확인하세요.",
+  metadataKeywords: [
+    "마사지러브",
+    "전국 출장 마사지",
+    "지역별 출장 마사지",
+    "24시간 상담",
+  ],
   eyebrow: "마사지러브 지역 안내",
   h1: "전국 출장 마사지",
   heroParagraph:
@@ -395,6 +402,7 @@ export const FIXED_VISIBLE_CONTENT: readonly FixedVisibleContentEntry[] = [
     fields: {
       title: HOME_COPY.metadataTitle,
       description: HOME_COPY.metadataDescription,
+      keywords: [...HOME_COPY.metadataKeywords],
       h1: HOME_COPY.h1,
       eyebrow: HOME_COPY.eyebrow,
       headings: [

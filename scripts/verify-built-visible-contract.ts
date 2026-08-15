@@ -193,10 +193,9 @@ async function main() {
       description: document.fields.description,
       canonical: expectedCanonical(document),
       robots: "index, follow",
-      keywords:
-        document.pageType === "fixed-page"
-          ? null
-          : (document.fields.keywords ?? []).join(","),
+      keywords: document.fields.keywords?.length
+        ? document.fields.keywords.join(",")
+        : null,
       openGraph: {
         title: expectedTitle(document),
         description: document.fields.description,

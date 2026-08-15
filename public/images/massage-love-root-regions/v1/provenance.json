@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "massage-love-root-region-card-provenance/v1",
+  "createdAt": "2026-08-15",
+  "scope": "Homepage only. One representative, externally sourced photograph is used for each active root-region card; directory cards do not render these assets.",
+  "derivative": {
+    "operation": "center-crop and resize",
+    "format": "WebP",
+    "width": 1200,
+    "height": 720,
+    "quality": 82,
+    "encoder": "ImageMagick WebP method 6",
+    "sourceProvider": "Wikimedia Commons",
+    "sourceCheckedOn": "2026-08-15"
+  },
+  "licensingNotice": "Each derived WebP is a cropped/resized version of the linked source. Attribution and licence information are retained below. CC BY-SA derivatives remain subject to their respective share-alike terms; this provenance file is the project attribution record.",
+  "assets": [
+    {
+      "rootKey": "seoul",
+      "assetPath": "/images/massage-love-root-regions/v1/seoul.webp",
+      "sha256": "c8198550953cb54b0af187a4f6f4a1a5f9361e0d3e370fc2c6b5ec7f002397b0",
+      "alt": "서울 도심의 야경과 스카이라인",
+      "source": {
+        "title": "Seoul cityscape by night.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Seoul_cityscape_by_night.jpg",
+        "author": "Zubro",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "originalDimensions": "4912x3264"
+      }
+    },
+    {
+      "rootKey": "incheon",
+      "assetPath": "/images/massage-love-root-regions/v1/incheon.webp",
+      "sha256": "e55d341937634f6d6fb1f6ae74003feeb46fb66e7dd84abe12f2cf32d3c6327d",
+      "alt": "밤에 빛나는 인천대교",
+      "source": {
+        "title": "Incheon bridge 2009.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Incheon_bridge_2009.jpg",
+        "author": "Dogtra_Nick",
+        "license": "CC BY 2.0 (photograph)",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "originalDimensions": "900x506",
+        "note": "The Commons page separately marks the depicted bridge as PD-structure in South Korea; the photograph itself is CC BY 2.0."
+      }
+    },
+    {
+      "rootKey": "gyeonggi",
+      "assetPath": "/images/massage-love-root-regions/v1/gyeonggi.webp",
+      "sha256": "2ecaea44693012f9c1b3c07fab28f8be8702f81800a7eef016430d0e4bac2ed4",
+      "alt": "수원 화성 성곽과 주변 풍경",
+      "source": {
+        "title": "Suwon Hwaseong.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Suwon_Hwaseong.jpg",
+        "author": "YKJJ",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "originalDimensions": "3264x2448"
+      }
+    },
+    {
+      "rootKey": "cheonan",
+      "assetPath": "/images/massage-love-root-regions/v1/cheonan.webp",
+      "sha256": "99abb3084046dd9de038d935bea2e6f0d992898ccac08522f65bb34c9e54f19d",
+      "alt": "천안 독립기념관 겨레의 집",
+      "source": {
+        "title": "Independence Hall of Korea(main hall).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Independence_Hall_of_Korea(main_hall).jpg",
+        "author": "NYPD9990",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "originalDimensions": "4000x3000"
+      }
+    },
+    {
+      "rootKey": "asan",
+      "assetPath": "/images/massage-love-root-regions/v1/asan.webp",
+      "sha256": "e78eee4c66b863e3ca2018662b2a37f9d21b7723783af80e7186fcda0cdc4a2a",
+      "alt": "아산 현충사 인근의 봄 정원",
+      "source": {
+        "title": "Korea-Asan-Spring garden near Hyeonchungsa-01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Korea-Asan-Spring_garden_near_Hyeonchungsa-01.jpg",
+        "author": "Jo from Brisbane, Australia",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "originalDimensions": "3872x2592"
+      }
+    },
+    {
+      "rootKey": "daejeon",
+      "assetPath": "/images/massage-love-root-regions/v1/daejeon.webp",
+      "sha256": "e2019888f96b02c4778fc5738cb9726573716d4ce6ffa7e7762113bf6d02a851",
+      "alt": "대전 엑스포다리의 야경",
+      "source": {
+        "title": "Expo Bridge Daejeon at night.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Expo_Bridge_Daejeon_at_night.jpg",
+        "author": "Kokoloris",
+        "license": "Public domain (author release)",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+        "originalDimensions": "4000x3000"
+      }
+    },
+    {
+      "rootKey": "daegu",
+      "assetPath": "/images/massage-love-root-regions/v1/daegu.webp",
+      "sha256": "336c22fa0b88a523122cddc2b75ef2bcceb6719bf8b3490779260b3384203811",
+      "alt": "두류공원에서 바라본 대구 시가지",
+      "source": {
+        "title": "Daegu, South Korea from Duryu Park.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Daegu,_South_Korea_from_Duryu_Park.jpg",
+        "author": "Ron Clausen",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "originalDimensions": "1264x844"
+      }
+    },
+    {
+      "rootKey": "gumi",
+      "assetPath": "/images/massage-love-root-regions/v1/gumi.webp",
+      "sha256": "9dc19cbfc6f7d846555f0b5981ceaad0683395604410be9adf181547b0713bc5",
+      "alt": "구미 금오산 케이블카와 숲",
+      "source": {
+        "title": "GeumoSan cable Car.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:GeumoSan_cable_Car.jpg",
+        "author": "Kmonsoor",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "originalDimensions": "1600x1600"
+      }
+    },
+    {
+      "rootKey": "pohang",
+      "assetPath": "/images/massage-love-root-regions/v1/pohang.webp",
+      "sha256": "7637881e060f03efd13574c442dd93dad9a90c5bc9d89d17ef81e52f2c38fa17",
+      "alt": "밤의 포항 영일대해수욕장",
+      "source": {
+        "title": "Yeongildae Beach at night on March 2nd, 2019.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Yeongildae_Beach_at_night_on_March_2nd,_2019.jpg",
+        "author": "Choi2451",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "originalDimensions": "4032x3024"
+      }
+    },
+    {
+      "rootKey": "busan",
+      "assetPath": "/images/massage-love-root-regions/v1/busan.webp",
+      "sha256": "4ac0a9e53512b272396cf0fa8f3420c8c02d8773837f320dbc6c3a09955c229b",
+      "alt": "밤의 부산 광안대교",
+      "source": {
+        "title": "Gwangan Bridge at Night from Distance.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Gwangan_Bridge_at_Night_from_Distance.jpg",
+        "author": "harry-cong",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "originalDimensions": "4592x3056"
+      }
+    },
+    {
+      "rootKey": "jeju",
+      "assetPath": "/images/massage-love-root-regions/v1/jeju.webp",
+      "sha256": "e6c9fea8e5fd6d98a7e504a7f6448d243e0e102ddda92b1a04f70db81c05d137",
+      "alt": "제주 성산일출봉",
+      "source": {
+        "title": "Seongsan Ilchulbong 01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Seongsan_Ilchulbong_01.jpg",
+        "author": "Bernard Gagnon",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "originalDimensions": "5084x3389"
+      }
+    }
+  ]
+}

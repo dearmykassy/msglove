@@ -15,19 +15,24 @@ export function fixedPageMetadata({
   route,
   title,
   description,
+  keywords,
+  absoluteTitle = false,
   openGraphType = "website",
 }: {
   route: string;
   title: string;
   description: string;
+  keywords?: readonly string[];
+  absoluteTitle?: boolean;
   openGraphType?: "website" | "article";
 }): Metadata {
   const canonical = absoluteUrl(route);
-  const socialTitle = route === "/" ? title : `${title} · 마사지러브`;
+  const socialTitle = absoluteTitle || route === "/" ? title : `${title} · 마사지러브`;
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
+    ...(keywords ? { keywords: [...keywords] } : {}),
     alternates: { canonical },
     openGraph: {
       type: openGraphType,
