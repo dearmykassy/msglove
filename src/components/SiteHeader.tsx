@@ -21,7 +21,11 @@ export function SiteHeader() {
         <nav className="desktop-nav" aria-label={SITE_COPY.desktopNavigationAriaLabel}>
           <NavigationLinks />
         </nav>
-        <a className="header-call" href={BUSINESS.phoneHref}>
+        <a
+          className="header-call"
+          data-analytics-location="header"
+          href={BUSINESS.phoneHref}
+        >
           {BUSINESS.phoneCtaLabel}
         </a>
         <details className="mobile-menu">

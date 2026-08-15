@@ -25,7 +25,11 @@ export function SiteFooter() {
         </div>
         <div>
           <strong>{SITE_COPY.footerPhoneHeading}</strong>
-          <a className="footer-phone" href={BUSINESS.phoneHref}>
+          <a
+            className="footer-phone"
+            data-analytics-location="footer"
+            href={BUSINESS.phoneHref}
+          >
             {BUSINESS.phoneCtaLabel}
           </a>
           <span className="footer-phone-number">{BUSINESS.phoneDisplay}</span>

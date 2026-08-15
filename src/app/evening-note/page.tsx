@@ -36,7 +36,11 @@ export default function EveningNotePage() {
           {EVENING_NOTE_COPY.changeParagraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <a className="primary-button" href={BUSINESS.phoneHref}>
+          <a
+            className="primary-button"
+            data-analytics-location="evening_note"
+            href={BUSINESS.phoneHref}
+          >
             {EVENING_NOTE_COPY.phoneCta}
           </a>
         </article>

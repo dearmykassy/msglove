@@ -46,3 +46,11 @@ FAST 후보 영수증을 현재 입력 해시에 다시 결속한다.
 - `artifacts/fast-candidate.v1.json`
 
 공개 전에는 `docs/launch-gates.md`의 모든 항목을 통과해야 한다.
+
+## GA4 / Netlify 환경변수
+
+이 사이트 전용 GA4 웹 데이터 스트림을 만든 뒤 Netlify의 **Site configuration →
+Environment variables**에 `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX`를 등록하고
+다시 배포한다. 이 공개 빌드 변수가 없거나 형식이 잘못되면 Google 태그를 전혀
+로드하지 않는다. 이벤트 정의, 개인정보 제한과 전화 클릭 지표의 한계는
+[`docs/analytics.md`](docs/analytics.md)를 참고한다.

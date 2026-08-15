@@ -45,7 +45,11 @@ export default function HomePage() {
                 {HOME_COPY.primaryCta}
                 <span aria-hidden="true">→</span>
               </a>
-              <a className="home-secondary-button" href={BUSINESS.phoneHref}>
+              <a
+                className="home-secondary-button"
+                data-analytics-location="home_hero"
+                href={BUSINESS.phoneHref}
+              >
                 {HOME_COPY.secondaryCta}
               </a>
             </div>
@@ -137,7 +141,12 @@ export default function HomePage() {
           <PriceLedger compact />
           <div className="home-pricing-callout">
             <span>{BUSINESS.consultation}</span>
-            <a href={BUSINESS.phoneHref}>{HOME_COPY.pricingCta}</a>
+            <a
+              data-analytics-location="home_pricing"
+              href={BUSINESS.phoneHref}
+            >
+              {HOME_COPY.pricingCta}
+            </a>
           </div>
         </div>
       </section>

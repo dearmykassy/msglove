@@ -33,7 +33,11 @@ export default function LoveSelectPage() {
           <Link className="text-button" href="/pricing/">
             {LOVE_SELECT_COPY.pricingCta} <span>↗</span>
           </Link>
-          <a className="primary-button" href={BUSINESS.phoneHref}>
+          <a
+            className="primary-button"
+            data-analytics-location="love_select"
+            href={BUSINESS.phoneHref}
+          >
             {LOVE_SELECT_COPY.phoneCta}
           </a>
         </div>

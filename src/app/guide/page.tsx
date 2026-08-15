@@ -34,7 +34,13 @@ export default function GuidePage() {
             <h2>{GUIDE_COPY.calloutHeading}</h2>
             <p>{BUSINESS.consultation} · {BUSINESS.payment} · {BUSINESS.cardPayment}</p>
           </div>
-          <a className="primary-button" href={BUSINESS.phoneHref}>{BUSINESS.phoneCtaLabel}</a>
+          <a
+            className="primary-button"
+            data-analytics-location="guide_callout"
+            href={BUSINESS.phoneHref}
+          >
+            {BUSINESS.phoneCtaLabel}
+          </a>
         </div>
       </section>
     </main>

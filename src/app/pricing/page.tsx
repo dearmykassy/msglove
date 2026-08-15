@@ -32,7 +32,11 @@ export default function PricingPage() {
             <h2>{PRICING_COPY.calloutHeading}</h2>
             <p>{PRICING_COPY.calloutParagraph}</p>
           </div>
-          <a className="primary-button" href={BUSINESS.phoneHref}>
+          <a
+            className="primary-button"
+            data-analytics-location="pricing_callout"
+            href={BUSINESS.phoneHref}
+          >
             {BUSINESS.phoneCtaLabel}
           </a>
         </div>

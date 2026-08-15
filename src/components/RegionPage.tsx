@@ -42,7 +42,11 @@ export function RegionPage({ node }: { node: RegionNode }) {
             <h1 id="region-landing-title">{content.fields.h1}</h1>
             <p>{content.heroLead}</p>
             <div className="hero-actions">
-              <a className="primary-button" href={phoneHref}>
+              <a
+                className="primary-button"
+                data-analytics-location="region_hero"
+                href={phoneHref}
+              >
                 전화상담
               </a>
               <a className="text-button" href="#region-pricing">
@@ -162,7 +166,9 @@ export function RegionPage({ node }: { node: RegionNode }) {
                 ))}
               </ol>
               <p>{content.consultation.phonePrompt}</p>
-              <a href={phoneHref}>전화상담</a>
+              <a data-analytics-location="region_consultation" href={phoneHref}>
+                전화상담
+              </a>
             </aside>
           </div>
         </section>
@@ -218,7 +224,12 @@ export function RegionPage({ node }: { node: RegionNode }) {
         </section>
       </div>
 
-      <a className="region-phone-fab" href={phoneHref} aria-label={`${content.exactShared.contact.display}으로 전화상담`}>
+      <a
+        aria-label={`${content.exactShared.contact.display}으로 전화상담`}
+        className="region-phone-fab"
+        data-analytics-location="region_floating"
+        href={phoneHref}
+      >
         <span aria-hidden="true">☎</span>
         <strong>전화상담</strong>
       </a>

@@ -88,7 +88,11 @@ export function BlogPostArticle({ post }: { post: BlogPost }) {
           <Link className="text-button" href="/areas/">
             지역 안내 <span>↗</span>
           </Link>
-          <a className="primary-button" href={BUSINESS.phoneHref}>
+          <a
+            className="primary-button"
+            data-analytics-location="blog_action"
+            href={BUSINESS.phoneHref}
+          >
             {BUSINESS.phoneCtaLabel}
           </a>
         </div>
