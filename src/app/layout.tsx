@@ -25,6 +25,12 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   robots: INDEXABLE_ROBOTS,
+  verification: {
+    other: {
+      "naver-site-verification":
+        "5c888aa8349db333cbd916cfa37312d5bfe59dca",
+    },
+  },
 };
 
 export const viewport: Viewport = {
