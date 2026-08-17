@@ -29,6 +29,9 @@ pnpm lint
 pnpm build
 ```
 
+배포 후 `https://msglove.kr/rss.xml`이 RSS 2.0 XML과 최신 블로그 글 2건을
+반환하는지도 확인한다. 전체 지역 URL 목록은 기존 sitemap에서 관리한다.
+
 `pnpm build`는 corpus와 이미지 계획 원장을 결정적으로 다시 만든 뒤
 `out/`에 정적 사이트를 내보내고, built semantic·AI 검토·로컬 Chromium·
 FAST 후보 영수증을 현재 입력 해시에 다시 결속한다.

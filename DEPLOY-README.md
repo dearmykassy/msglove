@@ -13,7 +13,8 @@ cd /Users/ssm/Documents/Services/massagelove
 ```
 
 The static export already contains the generated regional pages and the version-2
-regional banner WebPs under `out/images/massage-love-heroes/v2/`.
+regional banner WebPs under `out/images/massage-love-heroes/v2/`. It also includes
+the RSS 2.0 feed at `out/rss.xml` for publication as `https://msglove.kr/rss.xml`.
 
 ## Rebuild before a future deploy
 

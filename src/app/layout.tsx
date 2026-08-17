@@ -42,6 +42,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
+      <head>
+        <link
+          href={`${SITE_ORIGIN}/rss.xml`}
+          rel="alternate"
+          title="마사지러브 블로그 RSS"
+          type="application/rss+xml"
+        />
+      </head>
       <body>
         <SiteHeader />
         {children}

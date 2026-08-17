@@ -16,7 +16,13 @@ export type BlogPost = {
   sections: readonly BlogSection[];
   consultationHeading: string;
   consultationItems: readonly string[];
+  publishedAt: string;
+  modifiedAt: string;
 };
+
+// Verified from the repository's initial production release commit
+// dc5054dbfaa10246a63a245e5fb1f5351a38b8a8. Do not replace this with build time.
+const BLOG_RELEASED_AT = "2026-08-15T13:13:24+09:00";
 
 export const BLOG_HUB_COPY = {
   metadataTitle: "방문 상담 블로그",
@@ -82,6 +88,8 @@ export const BLOG_POSTS = [
       "희망 시간과 조정할 수 있는 시간 범위",
       "비교해 둔 코스와 현장 카드 결제 여부",
     ],
+    publishedAt: BLOG_RELEASED_AT,
+    modifiedAt: BLOG_RELEASED_AT,
   },
   {
     slug: "jibeseo-masaji-badeul-su-issnayo",
@@ -132,6 +140,8 @@ export const BLOG_POSTS = [
       "희망 시간 범위와 코스·이용 시간 후보",
       "현장 카드 결제를 원하는지 여부",
     ],
+    publishedAt: BLOG_RELEASED_AT,
+    modifiedAt: BLOG_RELEASED_AT,
   },
 ] as const satisfies readonly BlogPost[];
 
