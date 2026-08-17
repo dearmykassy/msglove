@@ -17,6 +17,10 @@
 - RSS 단위 테스트 2건, 변경 파일 ESLint, TypeScript, Next 전체 빌드와 기존
   built SEO 감사가 통과했다. 정적 `out/rss.xml`은 6,590 bytes·item 2건이며
   `xmllint`와 홈의 RSS 자동 발견 링크 1건을 통과했다.
+- 운영 배포 후 `https://msglove.kr/rss.xml`은 HTTP 200, `application/xml`,
+  item 2건, SHA-256
+  `147460e05d233c21b60b05089d34dc10f47ac4ae0c7b07c6b8c17572ae9a1741`이며
+  운영 홈의 autodiscovery 링크도 정확히 1건이다.
 - 배포 번들의 전체 legacy test/lint는 RSS와 무관한 기존 누락 증거 파일,
   옛 visible-copy 기대값, 기존 GoogleAnalytics lint 오류 때문에 계속 실패한다.
   RSS 변경 파일의 집중 검증과 실제 정적 빌드는 모두 통과했다.
