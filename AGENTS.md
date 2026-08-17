@@ -9,3 +9,7 @@
   RSS; sitemap remains the complete crawl inventory.
 - Do not store secrets in tracked files. Preserve current phone, pricing,
   verification metadata, analytics and index policy unless explicitly changed.
+- This is not a Todaki-family platform. In every massage service or course
+  image, the massage practitioner must be an adult woman. Treat the customer's
+  gender and the practitioner's gender as separate roles and never infer one
+  from the other.
