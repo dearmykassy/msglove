@@ -7,10 +7,15 @@
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ACTIVE_REGION_NODES, getKeywordRegionLabel } from "../src/lib/regions";
+import {
+  ACTIVE_REGION_NODES,
+  getKeywordRegionLabel,
+  shortenKnownAdministrativeRegionNames,
+  type RegionNode,
+} from "../src/lib/regions";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -29,7 +34,12 @@ type BaselineEntry = {
   };
   seo: {
     metadata: { title: string; description: string };
-    keywords: { all: Record<string, string>; primary: string; visible: string[] };
+    keywords: {
+      all: Record<string, string>;
+      metadata?: Record<string, string>;
+      primary: string;
+      visible: string[];
+    };
     hero: { heading: { text: string }; lead: { text: string } };
   };
   editorial: JsonRecord;
@@ -216,13 +226,6 @@ function asRecord(value: unknown, pathLabel: string): JsonRecord {
   return value as JsonRecord;
 }
 
-function asStrings(value: unknown, pathLabel: string): string[] {
-  if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) {
-    throw new Error(`MASSAGE_LOVE_BASELINE_STRING_ARRAY_INVALID:${pathLabel}`);
-  }
-  return [...value] as string[];
-}
-
 function rewriteText(
   input: string,
   route: string,
@@ -344,6 +347,59 @@ function exactKeywords(nodePath: string, nodeLabel: string): string[] {
     throw new Error(`MASSAGE_LOVE_KEYWORD_LABEL_MISMATCH:${nodePath}`);
   }
   return KEYWORD_SUFFIXES.map((suffix) => `${label}${suffix}`);
+}
+
+function metadataKeywordPrefixes(source: BaselineEntry, node: RegionNode): string[] {
+  const sourceKeywordValues = [
+    ...Object.values(source.seo.keywords.all),
+    ...Object.values(source.seo.keywords.metadata ?? {}),
+    source.seo.keywords.primary,
+    ...source.seo.keywords.visible,
+  ];
+  const prefixes = sourceKeywordValues.flatMap((keyword) => {
+    const suffix = KEYWORD_SUFFIXES.find((candidate) => keyword.endsWith(candidate));
+    return suffix ? [keyword.slice(0, -suffix.length)] : [];
+  });
+  const pathLabelSuffixes = node.segments.slice(1).flatMap((_, index, segments) => {
+    const parts = segments.slice(index);
+    return [parts.join(" "), parts.join("")];
+  });
+  return [...new Set([
+    source.approved.locality_label,
+    node.displayName,
+    node.qualifiedName,
+    ...pathLabelSuffixes,
+    ...prefixes,
+  ].flatMap((label) => [label, label.replace(/\s+/gu, "")]))]
+    .filter(Boolean)
+    .sort((left, right) => right.length - left.length);
+}
+
+function rewriteSearchMetadata(
+  input: string,
+  node: RegionNode,
+  source: BaselineEntry,
+  slot: "title" | "description",
+  sourceCommercialName: string,
+  loveCommercialName: string,
+): string {
+  let result = rewriteText(
+    input,
+    node.path,
+    slot,
+    sourceCommercialName,
+    loveCommercialName,
+  );
+  const searchLabel = getKeywordRegionLabel(node);
+  const prefixes = metadataKeywordPrefixes(source, node);
+  for (const [index, suffix] of KEYWORD_SUFFIXES.entries()) {
+    const placeholder = `\uE000MASSAGE_LOVE_SEARCH_TARGET_${index}\uE001`;
+    for (const prefix of prefixes) {
+      result = result.replaceAll(`${prefix}${suffix}`, placeholder);
+    }
+    result = result.replaceAll(placeholder, `${searchLabel}${suffix}`);
+  }
+  return shortenKnownAdministrativeRegionNames(result);
 }
 
 function manifestEntry(source: BaselineEntry, target: JsonRecord): JsonRecord {
@@ -501,16 +557,18 @@ async function main() {
       commercialName,
       localityLabel: source.approved.locality_label,
       fields: {
-        title: rewriteText(
+        title: rewriteSearchMetadata(
           source.seo.metadata.title,
-          node.path,
+          node,
+          source,
           "title",
           sourceName,
           commercialName,
         ),
-        description: rewriteText(
+        description: rewriteSearchMetadata(
           source.seo.metadata.description,
-          node.path,
+          node,
+          source,
           "description",
           sourceName,
           commercialName,

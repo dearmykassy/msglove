@@ -1,5 +1,6 @@
 import capitalRegionData from "@/data/capital-regions.generated.json";
 import serviceCityRegionData from "@/data/service-city-regions.generated.json";
+import { createKnownAdministrativeNameShortener } from "@/lib/search-region-label";
 
 export const ACTIVE_ROOT_KEYS = [
   "seoul",
@@ -241,15 +242,33 @@ const NODE_BY_KEY = new Map(
   ACTIVE_REGION_NODES.map((node) => [keyForSegments(node.segments), node]),
 );
 
-const DISPLAY_NAME_FREQUENCY = ACTIVE_REGION_NODES.reduce(
-  (counts, node) => counts.set(node.displayName, (counts.get(node.displayName) ?? 0) + 1),
-  new Map<string, number>(),
-);
+export const OFFICIAL_ADMINISTRATIVE_REGION_NAMES = [...new Set([
+  ...Object.values(ROOT_LABELS).map((label) => label.full),
+  ...REGIONS.flatMap((record) => [
+    record.sidoName,
+    record.municipality,
+    record.district,
+    ...record.officialSigungu.split(/\s+/u),
+  ]),
+].filter((name): name is string => Boolean(name)))];
+
+export const shortenKnownAdministrativeRegionNames =
+  createKnownAdministrativeNameShortener(OFFICIAL_ADMINISTRATIVE_REGION_NAMES);
+
+const CONCISE_DISPLAY_NAME_FREQUENCY = ACTIVE_REGION_NODES.reduce((counts, node) => {
+  const concise = shortenKnownAdministrativeRegionNames(node.displayName);
+  return counts.set(concise, (counts.get(concise) ?? 0) + 1);
+}, new Map<string, number>());
 
 export function getKeywordRegionLabel(node: RegionNode): string {
-  return (DISPLAY_NAME_FREQUENCY.get(node.displayName) ?? 0) > 1
-    ? node.qualifiedName.replace(/\s+/g, "")
-    : node.displayName;
+  const conciseDisplayName = shortenKnownAdministrativeRegionNames(node.displayName);
+  if (node.kind !== "root" && (CONCISE_DISPLAY_NAME_FREQUENCY.get(conciseDisplayName) ?? 0) > 1) {
+    return [
+      ROOT_LABELS[node.rootKey].short,
+      ...node.segments.slice(1).map(shortenKnownAdministrativeRegionNames),
+    ].join("");
+  }
+  return conciseDisplayName;
 }
 
 export function getDirectChildren(node: RegionNode): RegionChild[] {

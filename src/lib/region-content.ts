@@ -3,6 +3,7 @@ import { REGION_SHARED_EXACT } from "@/lib/region-shared-content";
 import {
   ACTIVE_REGION_NODES,
   getKeywordRegionLabel,
+  shortenKnownAdministrativeRegionNames,
   type RegionNode,
 } from "@/lib/regions";
 
@@ -152,9 +153,12 @@ function assertSnapshot(): void {
     const expectedKeywords = REGION_KEYWORD_SUFFIXES.map(
       (suffix) => `${getKeywordRegionLabel(node)}${suffix}`,
     );
+    const metadataFields = [entry.fields.title, entry.fields.description, ...entry.fields.keywords];
     if (
       entry.fields.keywords.length !== expectedKeywords.length ||
       entry.fields.keywords.some((keyword, index) => keyword !== expectedKeywords[index]) ||
+      !entry.fields.title.startsWith(`${getKeywordRegionLabel(node)}출장마사지 ${getKeywordRegionLabel(node)}출장안마`) ||
+      metadataFields.some((field) => shortenKnownAdministrativeRegionNames(field) !== field) ||
       entry.fields.h1 !== entry.commercialName ||
       entry.faq.items.length !== 7 ||
       REGION_SHARED_EXACT.contact.display !== "0508-202-3906" ||
