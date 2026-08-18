@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import { BUSINESS } from "@/data/business";
 import { SITE_COPY } from "@/lib/visible-content";
 

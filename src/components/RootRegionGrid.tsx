@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import type { CSSProperties } from "react";
 import { ROOT_REGION_CARD_IMAGES } from "@/data/root-region-card-images";
 import {

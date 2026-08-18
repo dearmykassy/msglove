@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import { BLOG_POSTS, type BlogPost } from "@/data/blog";
 import { BUSINESS } from "@/data/business";
 import { absoluteUrl } from "@/lib/site-config";

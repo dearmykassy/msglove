@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import { BUSINESS } from "@/data/business";
 import { fixedPageMetadata } from "@/lib/site-config";
 import { LOVE_SELECT_COPY } from "@/lib/visible-content";

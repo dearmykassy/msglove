@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import { BLOG_HUB_COPY, BLOG_POSTS } from "@/data/blog";
 import { fixedPageMetadata } from "@/lib/site-config";
 

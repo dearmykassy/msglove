@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import { PriceLedger } from "@/components/PriceLedger";
 import { RegionDirectory } from "@/components/RegionDirectory";
 import { ReleasedHeaderStyle, ReleasedHeroPicture } from "@/components/ReleasedHero";

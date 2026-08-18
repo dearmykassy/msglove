@@ -1,5 +1,24 @@
 # 마사지러브 배포 기록
 
+## 2026-08-19 — 안정적인 sitemap lastmod
+
+- 1,301개 canonical URL에 의미 있는 콘텐츠 revision 시각을 route group별로 고정했다.
+  홈은 metadata/지역 표현 revision `3ffeec0e`, 일반 고정 페이지는 운영 launch
+  `dc5054db`, 지역 1,291개는 검색 메타 revision `6f94fd69`의 실제 commit 시각을 쓴다.
+  블로그 2건은 기존 각 글의 `modifiedAt`을 그대로 사용한다.
+- 빌드 시각이나 `Date.now()`로 freshness를 만들지 않으며 Google이 무시하는 sitemap
+  `priority`·`changefreq`를 제거했다. canonical URL·metadata·화면 문구는 변경하지 않았다.
+- 내부 Next 링크는 중앙 `SiteLink`를 통해서만 렌더하고 운영에서는 `prefetch=false`를
+  강제한다. wrapper 외 직접 `next/link` import를 막는 전체 source 회귀 계약을 추가해
+  자동 `_rsc` crawl 요청의 재발을 차단한다.
+- URL 수·고유성, 날짜 parse/nonfuture/stability, 블로그 exact modifiedAt, 금지 필드
+  0건을 sitemap 회귀 테스트로 유지한다.
+- sitemap/link 집중 계약 5/5와 TypeScript, Next 정적 build 1,306페이지,
+  built visible/SEO audit 1,301경로가 통과했다. 변경 파일 lint는 오류 0(기존 img warning
+  1)이다. 전체 suite는 이 변경과 무관한 기존 artifact 영수증 2개 누락, visible-copy
+  기대값 2건, 전화 CTA 1건, 이미지 preflight lock 1건으로 계속 실패하고, 전체 lint도
+  기존 `GoogleAnalytics.tsx`의 `prefer-rest-params` 오류 1건이 남아 있다.
+
 ## 2026-08-19 — 고객 검색형 지역 메타 영구 규칙
 
 - 1,291개 지역 title·keywords·description의 검색 지역 표기를 정식 행정명보다

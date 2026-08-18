@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SiteLink";
 import { createRegionContent } from "@/lib/region-content";
 import { getDirectChildren, type RegionNode } from "@/lib/regions";
 

@@ -24,3 +24,13 @@
   official visible H1/body/breadcrumb/schema names unchanged. Every regional
   route must retain exhaustive tests for all three metadata fields, uniqueness,
   the examples above, and formal-suffix leakage immediately before service keywords.
+- Sitemap `lastmod` must come from a verified meaningful content commit/receipt
+  and remain pinned by route group; blog entries must use each post's existing
+  `modifiedAt`. Never derive freshness from build time or `Date.now()`, and do
+  not emit Google's ignored sitemap `priority` or `changefreq` hints. Preserve
+  the canonical URL inventory and test count, uniqueness, exact dates,
+  parseability, non-future values and repeat-call stability.
+- All internal Next links must import `src/components/SiteLink.tsx`; that sole
+  wrapper forces `prefetch={false}` in production so automatic `_rsc` requests
+  do not consume crawl budget. Direct `next/link` imports outside the wrapper
+  are forbidden and must remain covered by a whole-source regression test.
